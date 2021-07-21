@@ -22,14 +22,22 @@ class LoginForm extends React.Component {
     });
   };
 
+  canLogin = (event) => {
+    event.preventDefault();
+    console.log(this.state.username);
+    if (this.state.username !== "" && this.state.password !== "") {
+      {
+        this.props.handleLogin(this.state);
+      }
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   render() {
     return (
-      <form
-        onSubmit={this.props.handleLogin(
-          this.state.username,
-          this.state.password
-        )}
-      >
+      <form onSubmit={this.canLogin}>
         <div>
           <label>
             Username
